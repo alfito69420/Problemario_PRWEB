@@ -28,7 +28,7 @@ function conexion($servidor, $usuario, $password, $nombreBaseDatos)
 {
     $conexion = mysqli_connect($servidor, $usuario, $password, $nombreBaseDatos);
     consulta($nombreBaseDatos, $conexion);
-}
+} 
 
 function consulta($nombreBaseDatos, $conexion)
 {
@@ -36,7 +36,9 @@ function consulta($nombreBaseDatos, $conexion)
             FROM INFORMATION_SCHEMA.TABLES
             WHERE TABLE_SCHEMA='" . $nombreBaseDatos . "'";
 
-    mostrar($conexion, $consulta);
+    if ($consulta != null) {
+        mostrar($conexion, $consulta);
+    }
 } //close function
 
 function mostrar($conexion, $consulta)
